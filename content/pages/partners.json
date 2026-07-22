@@ -1,12 +1,99 @@
 {
   "title": "Partners",
   "public_partners": [
-    { "name": "Placeholder public partner", "url": "https://example.org" }
+    {
+      "name": "U.S. Environmental Protection Agency (EPA)",
+      "url": "https://www.epa.gov",
+      "description": "The primary U.S. government environmental agency, managing the three Superfund sites in St. Louis. Region 5 (Chicago); Project Manager Thomas Alcamo, alcamo.thomas@epa.gov, (312) 886-7278."
+    },
+    {
+      "name": "Centers for Disease Control and Prevention (CDC)",
+      "url": "https://www.cdc.gov",
+      "description": "Monitors public health risks related to Superfund projects."
+    },
+    {
+      "name": "Agency for Toxic Substances and Disease Registry (ATSDR)",
+      "url": "https://www.atsdr.cdc.gov",
+      "description": "CDC division funded under Superfund to conduct health assessments at contaminated sites."
+    },
+    {
+      "name": "National Institute of Environmental Health Sciences (NIEHS)",
+      "url": "https://www.niehs.nih.gov",
+      "description": "Part of the National Institutes of Health; works on health research related to environmental exposure."
+    },
+    {
+      "name": "International Joint Commission (IJC)",
+      "url": "https://www.ijc.org/en",
+      "description": "The Canada–U.S. Great Lakes agency, established in 1909, overseeing boundary waters; has attended Task Force meetings."
+    },
+    {
+      "name": "Michigan Department of Environment, Great Lakes, and Energy (EGLE)",
+      "url": "https://www.michigan.gov/egle/",
+      "description": "State equivalent to the EPA; assumes Superfund site monitoring after cleanup."
+    },
+    {
+      "name": "Michigan Department of Health and Human Services (MDHHS)",
+      "url": "https://www.michigan.gov/mdhhs",
+      "description": "Addresses contamination exposures and manages the Michigan PBB Registry for exposed populations."
+    },
+    {
+      "name": "Mid-Michigan District Health Department (Gratiot County Office)",
+      "url": "",
+      "description": "151 Commerce Drive, Ithaca, MI 48847. (989) 875-2400."
+    }
   ],
   "private_stakeholders": [
-    { "name": "Placeholder private stakeholder", "url": "https://example.org" }
+    {
+      "name": "Michigan Chemical / Velsicol",
+      "url": "https://www.velsicol.com",
+      "description": "Founded 1935 in St. Louis; produced DDT during WWII, later expanded into flame retardants (PBB) and rare earth processing. Acquired by Velsicol Chemical (Chicago) in 1965, later owned by Northwest Industries/Fruit of the Loom. Dumped large quantities of DDT waste, radioactive residue, and PBB into the local environment."
+    },
+    {
+      "name": "Oxford Automotive (Lobdell-Emery)",
+      "url": "",
+      "description": "Auto parts manufacturer in eastern Alma. Discharged hexavalent chromium and potentially PFAS through storm drains into Pine River tributaries. Filed bankruptcy and closed in 2004."
+    },
+    {
+      "name": "Total Energies / Ultramar Diamond Shamrock (UDS) / Valero",
+      "url": "https://totalenergies.com",
+      "description": "Oil refineries that operated on Alma's east side, discharging refinery wastes into the Pine River and releasing VOCs, heavy metals, and acids into air and water. Total closed in 1999."
+    },
+    {
+      "name": "Jacobs Engineering Group",
+      "url": "https://www.jacobs.com",
+      "description": "Prime EPA contractor for Superfund site remediation — not a polluter."
+    },
+    {
+      "name": "Weston Solutions",
+      "url": "https://www.westonsolutions.com",
+      "description": "Provides technical assistance to Michigan EGLE; headquartered in West Chester, PA."
+    }
   ],
   "college_university_partners": [
-    { "name": "Placeholder college/university partner", "url": "https://example.org" }
+    {
+      "name": "Alma College",
+      "url": "",
+      "description": "The four-year liberal arts college in Alma, about four miles from the Velsicol Superfund sites in St. Louis. Students and faculty have volunteered on contamination issues and shared the 2008 Jimmy & Rosalynn Carter Partnership Award with the Task Force."
+    },
+    {
+      "name": "Central Michigan University",
+      "url": "",
+      "description": "Faculty and students have worked on watershed contamination projects. Houses Task Force records at the Clarke Historical Library, and is home to WCMU Public Media, the PBS/NPR regional affiliate."
+    },
+    {
+      "name": "Emory University, Rollins School of Public Health",
+      "url": "http://pbbregistry.emory.edu/Research/index.html",
+      "description": "Has maintained the PBB Registry since 2011, providing technical assistance on exposure documentation and health studies related to contamination."
+    },
+    {
+      "name": "Michigan State University",
+      "url": "",
+      "description": "Engaged in environmental and health research on watershed impacts. MSU Press has published books on regional contamination, and MSU co-hosted the 50th anniversary celebration of Silent Spring with Alma College in 2012."
+    },
+    {
+      "name": "University of Michigan",
+      "url": "",
+      "description": "Pioneered early fish-kill studies (1935) and toxicity analysis of PBB following the 1973 accident. Continues research on persistent pollutants including PFAS."
+    }
   ]
 }

@@ -5,6 +5,90 @@
 [build.environment]
   NODE_VERSION = "24.18.0"
 
+# Old Squarespace URLs (pinerivercag.org) that don't match the new site's
+# paths. Must come before the SPA catch-all below since Netlify uses
+# first-match. /about, /resources, /take-action, /contact carried over
+# unchanged and need no entry.
+[[redirects]]
+  from = "/where-we-work"
+  to = "/about/where-we-work"
+  status = 301
+
+[[redirects]]
+  from = "/by-laws"
+  to = "/about/by-laws"
+  status = 301
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/news"
+  status = 301
+
+[[redirects]]
+  from = "/blog"
+  to = "/news"
+  status = 301
+
+[[redirects]]
+  from = "/conference"
+  to = "/resources/conference"
+  status = 301
+
+[[redirects]]
+  from = "/minutes/*"
+  to = "/resources/meeting-minutes"
+  status = 301
+
+[[redirects]]
+  from = "/minutes"
+  to = "/resources/meeting-minutes"
+  status = 301
+
+[[redirects]]
+  from = "/timeline"
+  to = "/resources/timeline"
+  status = 301
+
+[[redirects]]
+  from = "/lessons"
+  to = "/resources/lessons"
+  status = 301
+
+[[redirects]]
+  from = "/public-partners"
+  to = "/resources/partners"
+  status = 301
+
+[[redirects]]
+  from = "/private-stakeholders"
+  to = "/resources/partners"
+  status = 301
+
+[[redirects]]
+  from = "/colleges-universities"
+  to = "/resources/partners"
+  status = 301
+
+[[redirects]]
+  from = "/glossary"
+  to = "/resources/glossary"
+  status = 301
+
+[[redirects]]
+  from = "/photos"
+  to = "/resources/photos"
+  status = 301
+
+[[redirects]]
+  from = "/poetry-contest"
+  to = "/resources/poetry-contest"
+  status = 301
+
+[[redirects]]
+  from = "/contact-us"
+  to = "/contact"
+  status = 301
+
 # SPA fallback: only applies when no real file exists at the requested path,
 # so /admin, /content-index/*.json, etc. are served as-is and never swallowed
 # by this rule.

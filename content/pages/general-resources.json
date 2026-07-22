@@ -1,10 +1,57 @@
 {
   "title": "General Resources",
+  "note": "The Task Force's document collection — plant blueprints, remedial investigation reports, consent decrees, groundwater and radiological survey data, and correspondence spanning the site's history — is archived at the Clarke Historical Library (Central Michigan University) and the Alma College Library Archives. Contact us if you're looking for something specific.",
   "items": [
     {
-      "title": "Placeholder resource",
-      "url": "https://example.org",
-      "description": "Replace with real resource links during content migration."
+      "title": "US EPA Velsicol Site Profile",
+      "url": "https://cumulis.epa.gov/supercpad/SiteProfiles/index.cfm?fuseaction=second.docdata&id=0502194",
+      "description": "VELSICOL CHEMICAL CORP. (MICHIGAN) Superfund site profile from the EPA."
+    },
+    {
+      "title": "Michigan PBB Registry",
+      "url": "http://pbbregistry.emory.edu/Research/index.html",
+      "description": "PBB exposure research from Emory University's Rollins School of Public Health."
+    }
+  ],
+  "reading_lists": [
+    {
+      "heading": "Books",
+      "entries": [
+        "Rachel Carson, Silent Spring (1962) — Velsicol Chemical threatened to sue if it was published.",
+        "Edwin Chen, PBB: An American Tragedy (1979)",
+        "Thomas H. Corbett, Cancer and Chemicals (1977), pp. 121–145",
+        "Joyce Egginton, The Poisoning of Michigan (1980; republished 2009)",
+        "Frederic Halbert & Sandra Halbert, Bitter Harvest (1998)",
+        "Jane Keon, Tombstone Town (2015)",
+        "Edward Lorenz, Civic Empowerment in an Age of Corporate Greed (2012)"
+      ]
+    },
+    {
+      "heading": "Films",
+      "entries": [
+        "Bitter Harvest (Charles Fries Production, 1981)",
+        "The Poisoning of Michigan (Thames Television, 1977)",
+        "Slaughter (Lou Grant Show episode, November 1978, CBS)"
+      ]
+    },
+    {
+      "heading": "Children's & Young Adult Books",
+      "entries": [
+        "Michael Foreman, One World (2012)",
+        "Laurie Lawlor, Rachel Carson and Her Book That Changed the World (2014)",
+        "Julian Lennon, Heal the Earth (2018) & Touch the Earth (2017)",
+        "Stephanie Sisson, Spring After Spring (2018)",
+        "Dr. Seuss, The Lorax (1971)",
+        "Karen Ball, Hazardous Homestead (1992)",
+        "Chris Barry, Mosquito Point (1996)",
+        "Virginia Bergin, H2O (2014)",
+        "Varda Burstyn, Water, Inc. (2005)",
+        "Mark Delaney, Misfits, Inc. No. 4: The Kingfisher's Tale (2000)",
+        "Gail Gauthier, Saving the Planet & Stuff (2003)",
+        "Jean Craighead George, The Case of the Missing Cutthroats (1999)",
+        "Diane Haynes, Flight or Fight (2006)",
+        "Greta Thunberg, One Too Small to Make a Difference (2019)"
+      ]
     }
   ]
 }

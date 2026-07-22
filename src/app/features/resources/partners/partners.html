@@ -4,24 +4,51 @@
     <div class="group">
       <h2>Public Partners</h2>
       <ul>
-        @for (p of page.public_partners; track p.url) {
-          <li><a [href]="p.url" target="_blank" rel="noopener">{{ p.name }}</a></li>
+        @for (p of page.public_partners; track p.name) {
+          <li>
+            @if (p.url) {
+              <a [href]="p.url" target="_blank" rel="noopener">{{ p.name }}</a>
+            } @else {
+              <span class="name">{{ p.name }}</span>
+            }
+            @if (p.description) {
+              <p class="description">{{ p.description }}</p>
+            }
+          </li>
         }
       </ul>
     </div>
     <div class="group">
       <h2>Private Stakeholders</h2>
       <ul>
-        @for (p of page.private_stakeholders; track p.url) {
-          <li><a [href]="p.url" target="_blank" rel="noopener">{{ p.name }}</a></li>
+        @for (p of page.private_stakeholders; track p.name) {
+          <li>
+            @if (p.url) {
+              <a [href]="p.url" target="_blank" rel="noopener">{{ p.name }}</a>
+            } @else {
+              <span class="name">{{ p.name }}</span>
+            }
+            @if (p.description) {
+              <p class="description">{{ p.description }}</p>
+            }
+          </li>
         }
       </ul>
     </div>
     <div class="group">
       <h2>College & University Partners</h2>
       <ul>
-        @for (p of page.college_university_partners; track p.url) {
-          <li><a [href]="p.url" target="_blank" rel="noopener">{{ p.name }}</a></li>
+        @for (p of page.college_university_partners; track p.name) {
+          <li>
+            @if (p.url) {
+              <a [href]="p.url" target="_blank" rel="noopener">{{ p.name }}</a>
+            } @else {
+              <span class="name">{{ p.name }}</span>
+            }
+            @if (p.description) {
+              <p class="description">{{ p.description }}</p>
+            }
+          </li>
         }
       </ul>
     </div>

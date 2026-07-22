@@ -1,6 +1,9 @@
 @if (page$ | async; as page) {
   <app-page-header eyebrow="Resources" [title]="page.title" />
   <div class="container list">
+    @if (page.note) {
+      <p class="note">{{ page.note }}</p>
+    }
     @for (item of page.items; track item.url) {
       <app-card>
         <a [href]="item.url" target="_blank" rel="noopener">
@@ -12,6 +15,16 @@
       </app-card>
     } @empty {
       <p class="muted">Nothing here yet.</p>
+    }
+    @for (list of page.reading_lists; track list.heading) {
+      <section class="reading-list">
+        <h2>{{ list.heading }}</h2>
+        <ul>
+          @for (entry of list.entries; track entry) {
+            <li>{{ entry }}</li>
+          }
+        </ul>
+      </section>
     }
   </div>
 }

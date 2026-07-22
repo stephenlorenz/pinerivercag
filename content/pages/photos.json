@@ -1,4 +1,31 @@
 {
   "title": "Photos",
-  "images": []
+  "images": [
+    { "image": null, "caption": "St. Louis Dam — the dam that created the reservoir where Michigan Chemical built its plant" },
+    { "image": null, "caption": "Early Michigan Chemical St. Louis factory, 1940s" },
+    { "image": null, "caption": "DDT production in the late 1940s, for the State Department" },
+    { "image": null, "caption": "Michigan Chemical–Velsicol plant, circa 1970" },
+    { "image": null, "caption": "Michigan Chemical from the east — aerial view showing river contamination" },
+    { "image": null, "caption": "Michigan Chemical from the Pine River" },
+    { "image": null, "caption": "Cattle destroyed after PBB contamination, mid-1970s" },
+    { "image": null, "caption": "The Burn Pit during the 1970s" },
+    { "image": null, "caption": "Plant demolition, circa 1980" },
+    { "image": null, "caption": "Former plant site, circa 1990 — debris and chemicals buried under a clay cap" },
+    { "image": null, "caption": "A tombstone marker warning of permanent contamination" },
+    { "image": null, "caption": "Fish tumors, mid-1990s — a trigger for renewed Superfund cleanup" },
+    { "image": null, "caption": "A dead robin, tested for contamination" },
+    { "image": null, "caption": "Emergency sediment removal, 1999" },
+    { "image": null, "caption": "Dredging operation, 2001" },
+    { "image": null, "caption": "Coffer dam system used to dry the river bottom, 2002" },
+    { "image": null, "caption": "Emergency removal begins, 2003" },
+    { "image": null, "caption": "Dredging on the north side, 2004" },
+    { "image": null, "caption": "Dredging behind the St. Louis dam, 2005" },
+    { "image": null, "caption": "Radioactive waste removal at the Breckenridge site" },
+    { "image": null, "caption": "Emergency fencing installed around contamination hotspots" },
+    { "image": null, "caption": "The Task Force Chair and City Manager at a commemorative bench" },
+    { "image": null, "caption": "Clean soil being placed near former contaminated homes" },
+    { "image": null, "caption": "Community tour of the Velsicol site during thermal remediation, October 2019" },
+    { "image": null, "caption": "Thermal destruction of underground contaminants beneath a protective cap, 2019" },
+    { "image": null, "caption": "The Pine River at the county's west end — an aspirational image of restoration" }
+  ]
 }

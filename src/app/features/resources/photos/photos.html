@@ -1,9 +1,13 @@
 @if (page$ | async; as page) {
   <app-page-header eyebrow="From the archive" [title]="page.title" />
   <div class="container gallery">
-    @for (photo of page.images; track photo.image) {
+    @for (photo of page.images; track photo.caption) {
       <figure>
-        <img [src]="photo.image" [alt]="photo.caption" loading="lazy" />
+        @if (photo.image) {
+          <img [src]="photo.image" [alt]="photo.caption" loading="lazy" />
+        } @else {
+          <div class="pending" aria-hidden="true">Photo pending upload</div>
+        }
         @if (photo.caption) {
           <figcaption>{{ photo.caption }}</figcaption>
         }

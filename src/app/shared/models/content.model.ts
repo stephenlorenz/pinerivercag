@@ -51,7 +51,7 @@ export interface GlossaryTerm {
 }
 
 export interface PhotoItem {
-  image: string;
+  image: string | null;
   caption: string;
 }
 

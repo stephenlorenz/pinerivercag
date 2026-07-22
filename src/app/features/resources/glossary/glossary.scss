@@ -1,0 +1,19 @@
+.terms {
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}
+
+.entry {
+  padding: 1rem 0;
+  border-top: 1px solid var(--color-fog);
+}
+
+dt {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--color-river);
+}
+
+dd {
+  margin: 0.3rem 0 0;
+}

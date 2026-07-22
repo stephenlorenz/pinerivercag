@@ -1,0 +1,14 @@
+@if (banner(); as b) {
+  <div class="banner" [class]="'style-' + b.style" role="status">
+    <div class="container row">
+      <p>
+        <span class="tag">{{ b.style }}</span>
+        {{ b.message }}
+        @if (b.link && b.linkText) {
+          <a [href]="b.link">{{ b.linkText }}</a>
+        }
+      </p>
+      <button type="button" (click)="dismiss()" aria-label="Dismiss alert">✕</button>
+    </div>
+  </div>
+}

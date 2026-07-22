@@ -1,0 +1,117 @@
+<section class="hero">
+  <svg
+    class="contour"
+    viewBox="0 0 1200 200"
+    preserveAspectRatio="none"
+    aria-hidden="true"
+  >
+    <path
+      class="contour-path"
+      d="M0,120 C120,40 200,180 340,110 C480,40 560,170 700,100 C840,30 920,150 1040,90 C1120,50 1160,80 1200,60"
+      fill="none"
+    />
+  </svg>
+
+  <div class="container hero-content">
+    <p class="eyebrow">Est. 1998 · Pine River Watershed, Michigan</p>
+    <h1>We watch the river so the river doesn't have to fight alone.</h1>
+    <p class="lede">
+      The Pine River Superfund Citizen Task Force is a volunteer-run nonprofit
+      that advises the EPA on cleaning up decades of chemical contamination in
+      Michigan's Pine River watershed — and makes sure the community stays in
+      the room while it happens.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-accent" routerLink="/donate">Support the work</a>
+      <a class="btn btn-outline" routerLink="/take-action">Take action</a>
+    </div>
+  </div>
+</section>
+
+<app-section-divider depth="0.0m" />
+
+<section class="container mission">
+  <div class="mission-grid">
+    <app-card>
+      <p class="eyebrow">Advise</p>
+      <h3>We sit at the table with the EPA</h3>
+      <p>
+        Task force members review remediation plans and represent community
+        concerns directly to the agencies responsible for cleanup.
+      </p>
+    </app-card>
+    <app-card>
+      <p class="eyebrow">Monitor</p>
+      <h3>We track what's actually happening</h3>
+      <p>
+        From meeting minutes to water sampling reports, we keep a public
+        record of the remediation as it unfolds.
+      </p>
+    </app-card>
+    <app-card>
+      <p class="eyebrow">Inform</p>
+      <h3>We translate it for everyone else</h3>
+      <p>
+        Superfund science is dense. Our glossary, timeline, and lessons pages
+        exist to make it legible to neighbors, not just regulators.
+      </p>
+    </app-card>
+  </div>
+</section>
+
+<app-section-divider depth="1.2m" />
+
+<section class="container split">
+  <div class="col">
+    <div class="col-heading">
+      <h2>Latest News</h2>
+      <a routerLink="/news">All news →</a>
+    </div>
+    @if (news$ | async; as items) {
+      @for (item of items; track item.slug) {
+        <a class="list-item" [routerLink]="['/news', item.slug]">
+          <p class="date">{{ item.date | date: 'MMM d, y' }}</p>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.summary }}</p>
+        </a>
+      } @empty {
+        <p class="muted">No news posted yet.</p>
+      }
+    }
+  </div>
+
+  <div class="col">
+    <div class="col-heading">
+      <h2>Upcoming Events</h2>
+      <a routerLink="/events">All events →</a>
+    </div>
+    @if (events$ | async; as items) {
+      @for (item of items; track item.slug) {
+        <a class="list-item" [routerLink]="['/events', item.slug]">
+          <p class="date">{{ item.start_date | date: 'MMM d, y · h:mm a' }}</p>
+          <h3>{{ item.title }}</h3>
+          @if (item.location) {
+            <p>{{ item.location }}</p>
+          }
+        </a>
+      } @empty {
+        <p class="muted">No upcoming events scheduled.</p>
+      }
+    }
+  </div>
+</section>
+
+<app-section-divider depth="2.4m" />
+
+<section class="container get-involved">
+  <div class="get-involved-grid">
+    <div>
+      <h2>Get involved</h2>
+      <p>
+        Join the mailing list for meeting notices and news, or make a
+        donation to keep this all-volunteer effort running.
+      </p>
+    </div>
+    <app-mailing-list-form />
+  </div>
+</section>

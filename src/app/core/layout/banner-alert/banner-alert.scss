@@ -1,0 +1,61 @@
+.banner {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    margin-left: 0.4rem;
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65rem 1.5rem;
+
+  p {
+    margin: 0;
+  }
+
+  button {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.9rem;
+    opacity: 0.75;
+    flex-shrink: 0;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 1px solid currentColor;
+  padding: 0.1rem 0.4rem;
+  margin-right: 0.5rem;
+}
+
+.style-info {
+  background: var(--color-river);
+  color: white;
+}
+
+.style-warning {
+  background: #d9a441;
+  color: var(--color-ink);
+}
+
+.style-urgent {
+  background: var(--color-clay);
+  color: white;
+}

@@ -1,0 +1,21 @@
+@if (event$ | async; as event) {
+  @if (event) {
+    <div class="container article">
+      <a class="back" routerLink="/events">← All events</a>
+      <p class="eyebrow">{{ event.start_date | date: 'EEEE, MMMM d, y · h:mm a' }}</p>
+      <h1>{{ event.title }}</h1>
+      @if (event.location) {
+        <p class="location">{{ event.location }}</p>
+      }
+      <div class="prose" [innerHTML]="event.bodyHtml"></div>
+      @if (event.rsvp_link) {
+        <a class="btn btn-primary" [href]="event.rsvp_link" target="_blank" rel="noopener">RSVP</a>
+      }
+    </div>
+  } @else {
+    <div class="container">
+      <p>That event couldn't be found.</p>
+      <a routerLink="/events">← All events</a>
+    </div>
+  }
+}

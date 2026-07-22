@@ -1,0 +1,9 @@
+.prose {
+  max-width: 42rem;
+  padding-bottom: 4rem;
+  font-size: 1.05rem;
+
+  ::ng-deep a {
+    text-decoration: underline;
+  }
+}

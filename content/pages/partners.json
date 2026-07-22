@@ -1,0 +1,12 @@
+{
+  "title": "Partners",
+  "public_partners": [
+    { "name": "Placeholder public partner", "url": "https://example.org" }
+  ],
+  "private_stakeholders": [
+    { "name": "Placeholder private stakeholder", "url": "https://example.org" }
+  ],
+  "college_university_partners": [
+    { "name": "Placeholder college/university partner", "url": "https://example.org" }
+  ]
+}

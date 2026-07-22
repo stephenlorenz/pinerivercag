@@ -1,0 +1,12 @@
+<!--
+  Not routed to or linked anywhere. Exists purely so Netlify's build-time
+  form-detection crawler can see this form's shape — Netlify cannot see
+  the real, client-rendered Angular form at src/app/features/contact/mailing-list-form.
+  Field names here must exactly match the ones posted at runtime.
+-->
+<form name="mailing-list" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="mailing-list" />
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <input type="text" name="bot-field" />
+</form>

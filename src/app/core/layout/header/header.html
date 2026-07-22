@@ -1,0 +1,45 @@
+<header class="site-header">
+  <div class="container bar">
+    <a class="wordmark" routerLink="/" (click)="closeAll()">
+      <span class="mark">PRC</span>
+      <span class="name">Pine River<br />Task Force</span>
+    </a>
+
+    <button
+      class="mobile-toggle"
+      type="button"
+      (click)="toggleMobile()"
+      [attr.aria-expanded]="mobileOpen()"
+      aria-controls="primary-nav"
+      aria-label="Toggle menu"
+    >
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="primary-nav" class="nav" [class.open]="mobileOpen()">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeAll()">
+        Home
+      </a>
+
+      @for (group of groups; track group.label) {
+        <div class="nav-group" [class.open]="openGroup() === group.label">
+          <button type="button" class="nav-group-toggle" (click)="toggleGroup(group.label)">
+            {{ group.label }}
+            <span class="chevron">▾</span>
+          </button>
+          <div class="nav-group-menu">
+            @for (link of group.links; track link.path) {
+              <a [routerLink]="link.path" routerLinkActive="active" (click)="closeAll()">
+                {{ link.label }}
+              </a>
+            }
+          </div>
+        </div>
+      }
+
+      <a routerLink="/take-action" routerLinkActive="active" (click)="closeAll()">Take Action</a>
+      <a routerLink="/contact" routerLinkActive="active" (click)="closeAll()">Contact</a>
+      <a class="btn btn-accent donate-cta" routerLink="/donate" (click)="closeAll()">Donate</a>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,40 @@
+<footer class="site-footer">
+  <div class="container grid">
+    <div class="col">
+      <p class="eyebrow">Pine River Superfund Citizen Task Force</p>
+      <p class="tagline">Watching the water since 1998.</p>
+      <a
+        class="social"
+        href="https://www.facebook.com/"
+        target="_blank"
+        rel="noopener"
+        >Facebook</a
+      >
+    </div>
+
+    @if (contact$ | async; as contact) {
+      <div class="col">
+        <p class="col-label">Contact</p>
+        <p>
+          <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
+        </p>
+        @if (contact.phone) {
+          <p>{{ contact.phone }}</p>
+        }
+        @if (contact.address) {
+          <p class="address">{{ contact.address }}</p>
+        }
+        <a routerLink="/contact">Full contact page →</a>
+      </div>
+    }
+
+    <div class="col signup">
+      <p class="col-label">Mailing List</p>
+      <app-mailing-list-form />
+    </div>
+  </div>
+
+  <div class="container legal">
+    <span>© {{ year }} Pine River Superfund Citizen Task Force</span>
+  </div>
+</footer>

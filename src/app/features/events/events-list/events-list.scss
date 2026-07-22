@@ -1,0 +1,44 @@
+.section-label {
+  font-size: 1.1rem;
+  margin-top: 2rem;
+
+  &.past {
+    color: var(--color-fog-dark);
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 2rem;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+
+    &:hover h3 {
+      color: var(--color-river);
+    }
+  }
+
+  h3 {
+    margin: 0.15rem 0 0.35rem;
+  }
+}
+
+.date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-fog-dark);
+  margin: 0;
+}
+
+.location {
+  margin: 0;
+}
+
+.muted {
+  color: var(--color-fog-dark);
+}

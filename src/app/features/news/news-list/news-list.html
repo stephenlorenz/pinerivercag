@@ -1,0 +1,16 @@
+<app-page-header eyebrow="Field notes" title="News" />
+<div class="container list">
+  @if (news$ | async; as items) {
+    @for (item of items; track item.slug) {
+      <a [routerLink]="[item.slug]">
+        <app-card>
+          <p class="date">{{ item.date | date: 'MMMM d, y' }}</p>
+          <h2>{{ item.title }}</h2>
+          <p>{{ item.summary }}</p>
+        </app-card>
+      </a>
+    } @empty {
+      <p class="muted">No news posted yet.</p>
+    }
+  }
+</div>

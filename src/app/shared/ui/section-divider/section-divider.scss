@@ -1,0 +1,37 @@
+.core-sample {
+  position: relative;
+  display: flex;
+  height: 10px;
+  width: 100%;
+  margin: 3.5rem 0;
+}
+
+.layer {
+  flex: 1;
+}
+
+.layer-paper {
+  background: var(--color-paper);
+}
+.layer-fog {
+  background: var(--color-fog);
+}
+.layer-current {
+  background: var(--color-current);
+}
+.layer-river {
+  background: var(--color-river);
+}
+.layer-ink {
+  background: var(--color-ink);
+}
+
+.depth-tag {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-fog-dark);
+}

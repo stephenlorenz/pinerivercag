@@ -1,0 +1,23 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 4rem;
+
+  a {
+    text-decoration: none;
+    color: var(--color-river);
+  }
+
+  h3 {
+    margin: 0 0 0.35rem;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.muted {
+  color: var(--color-fog-dark);
+}

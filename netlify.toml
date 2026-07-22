@@ -1,0 +1,21 @@
+[build]
+  command = "npm run build"
+  publish = "dist/pinerivercag/browser"
+
+[build.environment]
+  NODE_VERSION = "24.18.0"
+
+# SPA fallback: only applies when no real file exists at the requested path,
+# so /admin, /content-index/*.json, etc. are served as-is and never swallowed
+# by this rule.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# banner.json isn't content-hashed like the JS bundles, so without this a
+# volunteer's toggle could stay cached in a visitor's browser for a while.
+[[headers]]
+  for = "/content-index/banner.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

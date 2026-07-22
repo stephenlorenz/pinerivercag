@@ -1,0 +1,39 @@
+.prompt {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+input[type='text'],
+input[type='email'] {
+  font: inherit;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--color-fog-dark);
+  border-radius: var(--radius);
+  background: var(--color-paper-raised);
+  color: var(--color-ink);
+  flex: 1 1 180px;
+}
+
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.confirm {
+  font-weight: 600;
+  color: var(--color-river);
+}
+
+.error {
+  color: var(--color-clay);
+  margin-top: 0.5rem;
+}

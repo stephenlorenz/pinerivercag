@@ -1,0 +1,15 @@
+@if (page$ | async; as page) {
+  <app-page-header eyebrow="From the archive" [title]="page.title" />
+  <div class="container gallery">
+    @for (photo of page.images; track photo.image) {
+      <figure>
+        <img [src]="photo.image" [alt]="photo.caption" loading="lazy" />
+        @if (photo.caption) {
+          <figcaption>{{ photo.caption }}</figcaption>
+        }
+      </figure>
+    } @empty {
+      <p class="muted">No photos uploaded yet.</p>
+    }
+  </div>
+}

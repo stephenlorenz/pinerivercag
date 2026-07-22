@@ -1,0 +1,44 @@
+<form class="mailing-list-form" (ngSubmit)="submit()" #f="ngForm">
+  @if (status() === 'success') {
+    <p class="confirm">You're on the list — thanks for staying in touch.</p>
+  } @else {
+    <p class="prompt">Get news and event updates by email.</p>
+    <div class="fields">
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        autocomplete="name"
+        [(ngModel)]="name"
+        required
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email address"
+        autocomplete="email"
+        [(ngModel)]="email"
+        required
+      />
+      <!-- Honeypot: hidden from real visitors, catches simple bots -->
+      <input
+        type="text"
+        name="bot-field"
+        class="hp"
+        tabindex="-1"
+        autocomplete="off"
+        [(ngModel)]="botField"
+      />
+      <button type="submit" class="btn btn-primary" [disabled]="status() === 'submitting' || !f.valid">
+        @if (status() === 'submitting') {
+          Joining…
+        } @else {
+          Join mailing list
+        }
+      </button>
+    </div>
+    @if (status() === 'error') {
+      <p class="error">Something went wrong — please try again in a moment.</p>
+    }
+  }
+</form>

@@ -1,0 +1,163 @@
+// Fraunces: characterful display serif, used sparingly for headlines.
+@use '@fontsource-variable/fraunces';
+// Public Sans: USWDS's civic-web typeface — a deliberate nod to the fact that
+// this org works directly with the EPA. Body/UI text.
+@use '@fontsource/public-sans/400.css' as *;
+@use '@fontsource/public-sans/500.css' as *;
+@use '@fontsource/public-sans/600.css' as *;
+@use '@fontsource/public-sans/700.css' as *;
+// JetBrains Mono: field-notebook/data-sheet voice for eyebrows, dates, tags.
+@use '@fontsource/jetbrains-mono/400.css' as *;
+@use '@fontsource/jetbrains-mono/500.css' as *;
+
+:root {
+  // --- Color: named for the river system this org exists to study ---
+  --color-ink: #16262b; // deep river water at night — primary text
+  --color-river: #2e6e7e; // the river itself — primary/links/nav
+  --color-current: #5fa8b0; // sunlit shallows — hover/secondary accent
+  --color-clay: #a8623b; // contaminated sediment — used sparingly (CTA, urgent)
+  --color-paper: #eef0e9; // topo-map paper — page background
+  --color-paper-raised: #f8f9f4; // card/raised surface
+  --color-fog: #c7d0c9; // hairlines, dividers, muted borders
+  --color-fog-dark: #93a099;
+
+  --font-display: 'Fraunces Variable', ui-serif, Georgia, serif;
+  --font-body: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  --content-width: 72rem;
+  --radius: 3px;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  color: var(--color-ink);
+}
+
+h1 {
+  font-size: clamp(2.25rem, 4vw + 1rem, 3.75rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 2vw + 1rem, 2.25rem);
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--color-river);
+}
+
+a:hover {
+  color: var(--color-current);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-river);
+}
+
+.container {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--color-river);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--color-ink);
+  color: white;
+}
+
+.btn-accent {
+  background: var(--color-clay);
+  color: white;
+}
+
+.btn-accent:hover {
+  background: #8a4e2f;
+  color: white;
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--color-fog-dark);
+  color: var(--color-ink);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-river);
+  color: var(--color-river);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-river);
+  outline-offset: 2px;
+}

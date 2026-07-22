@@ -1,0 +1,37 @@
+<app-page-header eyebrow="Meetings & gatherings" title="Events" />
+<div class="container">
+  <h2 class="section-label">Upcoming</h2>
+  <div class="list">
+    @if (upcoming$ | async; as items) {
+      @for (item of items; track item.slug) {
+        <a [routerLink]="[item.slug]">
+          <app-card>
+            <p class="date">{{ item.start_date | date: 'MMM d, y · h:mm a' }}</p>
+            <h3>{{ item.title }}</h3>
+            @if (item.location) {
+              <p class="location">{{ item.location }}</p>
+            }
+          </app-card>
+        </a>
+      } @empty {
+        <p class="muted">No upcoming events scheduled.</p>
+      }
+    }
+  </div>
+
+  <h2 class="section-label past">Past events</h2>
+  <div class="list">
+    @if (past$ | async; as items) {
+      @for (item of items; track item.slug) {
+        <a [routerLink]="[item.slug]">
+          <app-card>
+            <p class="date">{{ item.start_date | date: 'MMM d, y' }}</p>
+            <h3>{{ item.title }}</h3>
+          </app-card>
+        </a>
+      } @empty {
+        <p class="muted">Nothing archived yet.</p>
+      }
+    }
+  </div>
+</div>

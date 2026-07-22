@@ -1,0 +1,15 @@
+@if (post$ | async; as post) {
+  @if (post) {
+    <div class="container article">
+      <a class="back" routerLink="/news">← All news</a>
+      <p class="eyebrow">{{ post.date | date: 'MMMM d, y' }}</p>
+      <h1>{{ post.title }}</h1>
+      <div class="prose" [innerHTML]="post.bodyHtml"></div>
+    </div>
+  } @else {
+    <div class="container">
+      <p>That news post couldn't be found.</p>
+      <a routerLink="/news">← All news</a>
+    </div>
+  }
+}

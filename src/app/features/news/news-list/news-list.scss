@@ -1,0 +1,36 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 4rem;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+
+    &:hover h2 {
+      color: var(--color-river);
+    }
+  }
+
+  h2 {
+    font-size: 1.35rem;
+    margin: 0.25rem 0 0.5rem;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-fog-dark);
+  margin: 0;
+}
+
+.muted {
+  color: var(--color-fog-dark);
+}

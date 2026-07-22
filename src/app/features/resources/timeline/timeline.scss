@@ -1,0 +1,53 @@
+.strata {
+  list-style: none;
+  margin: 0 0 4rem;
+  padding: 0 0 0 1.75rem;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0.3rem;
+    top: 0.4rem;
+    bottom: 0.4rem;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      var(--color-current),
+      var(--color-river) 50%,
+      var(--color-ink)
+    );
+  }
+}
+
+li {
+  position: relative;
+  padding-bottom: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -1.75rem;
+    top: 0.4rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-river);
+    border: 2px solid var(--color-paper);
+    box-shadow: 0 0 0 1.5px var(--color-river);
+  }
+}
+
+.year {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-river);
+  font-weight: 500;
+}
+
+.event {
+  font-size: 1rem;
+}

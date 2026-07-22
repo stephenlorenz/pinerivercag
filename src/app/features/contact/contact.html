@@ -1,0 +1,20 @@
+<app-page-header eyebrow="Say hello" title="Contact Us" />
+<div class="container grid">
+  @if (contact$ | async; as contact) {
+    <div class="details">
+      <p class="label">Email</p>
+      <p><a [href]="'mailto:' + contact.email">{{ contact.email }}</a></p>
+      @if (contact.phone) {
+        <p class="label">Phone</p>
+        <p>{{ contact.phone }}</p>
+      }
+      @if (contact.address) {
+        <p class="label">Mailing Address</p>
+        <p class="address">{{ contact.address }}</p>
+      }
+    </div>
+  }
+  <div class="signup">
+    <app-mailing-list-form />
+  </div>
+</div>

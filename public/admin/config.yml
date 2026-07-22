@@ -1,0 +1,199 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# If Netlify Identity + Git Gateway turns out not to be available for this
+# site, switch to: { name: github, repo: stephenlorenz/pinerivercag, branch: main }
+# plus a small OAuth-provider Netlify Function — see CLAUDE.md.
+
+media_folder: "content/uploads"
+public_folder: "/content-uploads"
+
+publish_mode: simple
+
+collections:
+  - name: news
+    label: "News Posts"
+    folder: "content/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime }
+      - { label: Summary, name: summary, widget: text }
+      - { label: Image, name: image, widget: image, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: events
+    label: "Events"
+    folder: "content/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Start, name: start_date, widget: datetime }
+      - { label: End, name: end_date, widget: datetime, required: false }
+      - { label: Location, name: location, widget: string, required: false }
+      - { label: Description, name: body, widget: markdown, required: false }
+      - { label: "RSVP / Link", name: rsvp_link, widget: string, required: false }
+
+  - name: minutes
+    label: "Meeting Minutes & Reports"
+    folder: "content/minutes"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime }
+      - { label: Notes, name: body, widget: markdown, required: false }
+      - { label: Attachment, name: file, widget: file, required: false }
+
+  - name: banner
+    label: "Site Banner Alert"
+    files:
+      - file: "content/banner/banner.json"
+        name: banner
+        label: "Banner Alert"
+        fields:
+          - { label: Enabled, name: enabled, widget: boolean, default: false }
+          - { label: Message, name: message, widget: string }
+          - { label: "Link URL", name: link, widget: string, required: false }
+          - { label: "Link Text", name: linkText, widget: string, required: false }
+          - label: Style
+            name: style
+            widget: select
+            options: [info, warning, urgent]
+            default: info
+
+  - name: pages
+    label: "Site Pages"
+    files:
+      - file: "content/pages/about.json"
+        name: about
+        label: "About Us"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Body, name: body, widget: markdown }
+
+      - file: "content/pages/where-we-work.json"
+        name: where-we-work
+        label: "Where We Work"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Body, name: body, widget: markdown }
+
+      - file: "content/pages/bylaws.json"
+        name: bylaws
+        label: "By-Laws"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Body, name: body, widget: markdown }
+
+      - file: "content/pages/contact.json"
+        name: contact
+        label: "Contact Info"
+        fields:
+          - { label: Email, name: email, widget: string }
+          - { label: Phone, name: phone, widget: string, required: false }
+          - { label: Address, name: address, widget: text, required: false }
+
+      - file: "content/pages/take-action.json"
+        name: take-action
+        label: "Take Action"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Body, name: body, widget: markdown }
+
+      - file: "content/pages/general-resources.json"
+        name: general-resources
+        label: "General Resources"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - label: Items
+            name: items
+            widget: list
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: URL, name: url, widget: string }
+              - { label: Description, name: description, widget: text, required: false }
+
+      - file: "content/pages/conference.json"
+        name: conference
+        label: "Conference"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Body, name: body, widget: markdown }
+
+      - file: "content/pages/timeline.json"
+        name: timeline
+        label: "Timeline"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - label: Entries
+            name: entries
+            widget: list
+            fields:
+              - { label: Year, name: year, widget: string }
+              - { label: Event, name: event, widget: text }
+
+      - file: "content/pages/lessons.json"
+        name: lessons
+        label: "Lessons"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Body, name: body, widget: markdown }
+
+      - file: "content/pages/glossary.json"
+        name: glossary
+        label: "Glossary"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - label: Terms
+            name: terms
+            widget: list
+            fields:
+              - { label: Term, name: term, widget: string }
+              - { label: Definition, name: definition, widget: text }
+
+      - file: "content/pages/partners.json"
+        name: partners
+        label: "Partners"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - label: Public Partners
+            name: public_partners
+            widget: list
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: URL, name: url, widget: string }
+          - label: Private Stakeholders
+            name: private_stakeholders
+            widget: list
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: URL, name: url, widget: string }
+          - label: College & University Partners
+            name: college_university_partners
+            widget: list
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: URL, name: url, widget: string }
+
+      - file: "content/pages/photos.json"
+        name: photos
+        label: "Photos"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - label: Images
+            name: images
+            widget: list
+            fields:
+              - { label: Image, name: image, widget: image }
+              - { label: Caption, name: caption, widget: string, required: false }
+
+      - file: "content/pages/poetry-contest.json"
+        name: poetry-contest
+        label: "Poetry Contest"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Body, name: body, widget: markdown }

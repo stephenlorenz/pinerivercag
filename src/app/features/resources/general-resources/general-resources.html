@@ -1,0 +1,17 @@
+@if (page$ | async; as page) {
+  <app-page-header eyebrow="Resources" [title]="page.title" />
+  <div class="container list">
+    @for (item of page.items; track item.url) {
+      <app-card>
+        <a [href]="item.url" target="_blank" rel="noopener">
+          <h3>{{ item.title }}</h3>
+        </a>
+        @if (item.description) {
+          <p>{{ item.description }}</p>
+        }
+      </app-card>
+    } @empty {
+      <p class="muted">Nothing here yet.</p>
+    }
+  </div>
+}

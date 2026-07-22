@@ -1,0 +1,25 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 4rem;
+}
+
+.date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-fog-dark);
+  margin: 0;
+}
+
+h3 {
+  margin: 0.15rem 0 0.5rem;
+}
+
+.prose {
+  margin-bottom: 0.75rem;
+}
+
+.muted {
+  color: var(--color-fog-dark);
+}

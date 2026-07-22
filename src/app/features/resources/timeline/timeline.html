@@ -1,0 +1,13 @@
+@if (page$ | async; as page) {
+  <app-page-header eyebrow="Decades on the river" [title]="page.title" />
+  <div class="container">
+    <ol class="strata">
+      @for (entry of page.entries; track entry.year) {
+        <li>
+          <span class="year">{{ entry.year }}</span>
+          <span class="event">{{ entry.event }}</span>
+        </li>
+      }
+    </ol>
+  </div>
+}

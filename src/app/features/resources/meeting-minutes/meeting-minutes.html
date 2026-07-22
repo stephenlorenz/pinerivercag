@@ -1,0 +1,19 @@
+<app-page-header eyebrow="The record" title="Meeting Minutes & Reports" />
+<div class="container list">
+  @if (minutes$ | async; as items) {
+    @for (item of items; track item.slug) {
+      <app-card>
+        <p class="date">{{ item.date | date: 'MMMM d, y' }}</p>
+        <h3>{{ item.title }}</h3>
+        @if (item.bodyHtml) {
+          <div class="prose" [innerHTML]="item.bodyHtml"></div>
+        }
+        @if (item.file) {
+          <a class="btn btn-outline" [href]="item.file" target="_blank" rel="noopener">Download</a>
+        }
+      </app-card>
+    } @empty {
+      <p class="muted">Nothing archived yet.</p>
+    }
+  }
+</div>

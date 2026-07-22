@@ -1,0 +1,11 @@
+@if (page$ | async; as page) {
+  <app-page-header eyebrow="Plain-language definitions" [title]="page.title" />
+  <dl class="container terms">
+    @for (t of page.terms; track t.term) {
+      <div class="entry">
+        <dt>{{ t.term }}</dt>
+        <dd>{{ t.definition }}</dd>
+      </div>
+    }
+  </dl>
+}

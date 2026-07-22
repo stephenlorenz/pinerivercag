@@ -40,7 +40,7 @@
 
 - [x] The site header Donate button text has a weird text color on hover and it's hard to read on hover: ![CleanShot 2026-07-22 at 12.40.21@2x](/Users/scl30/Library/Application Support/CleanShot/media/media_lGIwP8gkbE/CleanShot 2026-07-22 at 12.40.21@2x.png)
 
-- [ ] The new homepage (and maybe other pages) is no longer responsive
+- [x] The new homepage (and maybe other pages) is no longer responsive
 
 - [x] If I access /admin as a non-logged in user, it seems that I can access the portal. Is there a way to block seeing the portal page until I login?
 
@@ -52,13 +52,13 @@
 
 - [x] While in the Admin Portal, provide a link either in the header or add a footer to naviage back to the regular site.
 
-- [ ] Mailing List tasks
+- [x] Mailing List tasks
 
   - [x] Mailing list subscriptions are not saving (or at least don't appear in the portal)
   - [x] Add ability to delete mailing list subscriptions from the list
-  - [ ] If I provide a CSV of prevoius mailing list subscriptions, can you prepopulate the mailing list signup list?
+  - [x] If I provide a CSV of prevoius mailing list subscriptions, can you prepopulate the mailing list signup list?
 
-- [ ] Is it possible to display the posting date in the CMS tool and order by most recent to oldest?
+- [ ] Is it possible to display other fields (e.g. Updated On, Title, Date, Author) besides just the title, in the CMS tool and order by most recent to oldest?
 
 
 

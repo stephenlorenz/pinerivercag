@@ -44,6 +44,14 @@
       [hidden] {
         display: none !important;
       }
+      /* Decap's own account/avatar menu in its app header — its only item
+         is "Log Out", which our portal-bar above already provides, so this
+         is a redundant second logout control. Targets the aria-label Decap
+         itself authors on the button (stable across versions) rather than
+         its internal, hashed CSS-in-JS class names. */
+      [aria-label='Account options dropdown'] {
+        display: none;
+      }
       /* Same portal-bar as /admin/ and /admin/subscribers/ — sits in normal
          document flow *before* Decap's own script tag, so Decap's app
          (a plain block-level root, not position:fixed) renders below it

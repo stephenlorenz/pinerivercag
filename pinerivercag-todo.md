@@ -58,7 +58,11 @@
   - [x] Add ability to delete mailing list subscriptions from the list
   - [x] If I provide a CSV of prevoius mailing list subscriptions, can you prepopulate the mailing list signup list?
 
-- [ ] Is it possible to display other fields (e.g. Updated On, Title, Date, Author) besides just the title, in the CMS tool and order by most recent to oldest?
+- [x] Is it possible to display other fields (e.g. Updated On, Title, Date, Author) besides just the title, in the CMS tool and order by most recent to oldest?
+
+- [x] Is there a way to hide the logout from the Decap header? 
+
+- [ ] Is it possible to send an email alert to all netlify users for this project whenever the mailing list is updated?
 
 
 

@@ -1,11 +1,27 @@
-@if (page$ | async; as page) {
+@if (page(); as page) {
   <app-page-header eyebrow="Plain-language definitions" [title]="page.title" />
+  <div class="container search">
+    <input
+      type="search"
+      class="search-input"
+      placeholder="Search terms and definitions…"
+      aria-label="Search glossary"
+      [ngModel]="query()"
+      (ngModelChange)="query.set($event)"
+    />
+  </div>
   <dl class="container terms">
-    @for (t of page.terms; track t.term) {
+    @for (t of filteredTerms(); track t.term) {
       <div class="entry">
         <dt>{{ t.term }}</dt>
         <dd>{{ t.definition }}</dd>
       </div>
+    } @empty {
+      @if (query()) {
+        <p class="muted">No terms match "{{ query() }}".</p>
+      } @else {
+        <p class="muted">No terms yet.</p>
+      }
     }
   </dl>
 }

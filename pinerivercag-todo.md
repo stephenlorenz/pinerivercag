@@ -4,13 +4,14 @@
 - [x] make the page footer stick to the bottom of the page
 - [x] The header menus are difficult to navigate into. Currently, you have to click on the menu to be able move the mouse into the menu. You should be able to just move your mouse into the menu, without clicking.
 - [ ] Remove the Squarespace move as a Latest News item. Our audience doesn't care about that!
-- [ ] Add filter/search to the glossary page
+- [x] Add filter/search to the glossary page
 - [ ] Add site search to the header
 - [x] On the homepage, there are numbers to the right of each section. Why? Remove these unless there's a good reason for them.
 - [x] Move some other the images to the new site
 - [x] On the Photos page, allow users to click on the photo to zoom in in a modal. Also, create a  photo flip through gallery with captions.
-- [ ] Pull/reuse the favicon from the squarespace site
-- [ ] Hide the Poetry Contest page from the site, including links to it from the Resources menu
+- [x] Pull/reuse the favicon from the squarespace site
+- [x] Hide the Poetry Contest page from the site, including links to it from the Resources menu
+- [ ] I kind of like the clean look/design of the new homepage, but the old site had a lot of large splash photos in the header of the of the page. What about doing a large background image in the header of the homepage? What would that look like?
 
 
 

@@ -37,7 +37,6 @@ export class Header {
         { label: 'Partners', path: '/resources/partners' },
         { label: 'Glossary', path: '/resources/glossary' },
         { label: 'Photos', path: '/resources/photos' },
-        { label: 'Poetry Contest', path: '/resources/poetry-contest' },
       ],
     },
   ];

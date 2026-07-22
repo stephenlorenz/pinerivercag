@@ -87,12 +87,9 @@ export const routes: Routes = [
     path: 'resources/photos',
     loadComponent: () => import('./features/resources/photos/photos').then((m) => m.Photos),
   },
-  {
-    path: 'resources/poetry-contest',
-    loadComponent: () =>
-      import('./features/simple-page/simple-page').then((m) => m.SimplePage),
-    data: { pageName: 'poetry-contest', eyebrow: 'Resources' },
-  },
+  // resources/poetry-contest: hidden for now (no contest this year); route
+  // and nav link removed, content/pages/poetry-contest.json left in place
+  // so the page can come straight back if the contest runs again.
   {
     path: 'take-action',
     loadComponent: () =>

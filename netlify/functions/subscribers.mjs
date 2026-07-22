@@ -29,6 +29,21 @@ export const handler = async (event, context) => {
 
   const apiHeaders = { Authorization: `Bearer ${token}` };
 
+  if (event.httpMethod === 'DELETE') {
+    const id = event.queryStringParameters?.id;
+    if (!id) {
+      return { statusCode: 400, body: 'Missing id' };
+    }
+    const deleteRes = await fetch(`https://api.netlify.com/api/v1/submissions/${id}`, {
+      method: 'DELETE',
+      headers: apiHeaders,
+    });
+    if (!deleteRes.ok) {
+      return { statusCode: 502, body: 'Failed to delete submission' };
+    }
+    return { statusCode: 204, body: '' };
+  }
+
   const formsRes = await fetch(`https://api.netlify.com/api/v1/sites/${siteId}/forms`, {
     headers: apiHeaders,
   });
@@ -51,6 +66,7 @@ export const handler = async (event, context) => {
 
   const rows = submissions
     .map((s) => ({
+      id: s.id,
       name: s.data?.name ?? '',
       email: s.data?.email ?? '',
       submitted_at: s.created_at,

@@ -37,6 +37,13 @@
         --font-body: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
         --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
       }
+      /* #gate and .portal-bar below both set their own `display`, which
+         otherwise ties in specificity with the browser's default [hidden]
+         rule and wins (author rules apply after the UA stylesheet), so
+         toggling .hidden in JS would silently do nothing without this. */
+      [hidden] {
+        display: none !important;
+      }
       /* Same portal-bar as /admin/ and /admin/subscribers/ — sits in normal
          document flow *before* Decap's own script tag, so Decap's app
          (a plain block-level root, not position:fixed) renders below it

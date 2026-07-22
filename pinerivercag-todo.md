@@ -30,7 +30,7 @@
 
   - [x] Donorbox (like we have on Squarespace)
 
-  - [ ] Join mailing list (like we have on Squarespace)
+  - [x] Join mailing list (like we have on Squarespace)
 
 - [x] How do I set up the CMS (I assume Decap CMS)? Once this is set up, can you help me migrate all the news items and meeting minutes and other things that we still need to migrate (and not loose old content)?
 
@@ -44,11 +44,16 @@
 
 - [x] If I access /admin as a non-logged in user, it seems that I can access the portal. Is there a way to block seeing the portal page until I login?
 
-- [ ] Can we a link in the footer to the /admin portal?
+- [x] Can we a link in the footer to the /admin portal?
 
-- [ ] Can you update the design of the CMS tools to better match the UIX of the rest of the portal? Also, one thing that I find not-intuitive is the navigation in the header of the CMS tool.
+- [x] Can you update the design of the CMS tools to better match the UIX of the rest of the portal? Also, one thing that I find not-intuitive is the navigation in the header of the CMS tool.
 
 - [ ] We need a different tagline
+
+- [ ] Mailing List tasks
+
+  - [ ] Mailing list subscriptions are not saving (or at least don't appear in the portal)
+  - [ ] If I provide a CSV of pr
 
 
 

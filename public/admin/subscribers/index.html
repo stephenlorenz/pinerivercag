@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mailing List — Pine River Task Force</title>
+    <!-- Same pinned version + integrity hash as /admin/index.html, so the two
+         admin pages share one vetted copy of the Identity widget. -->
+    <script
+      src="https://unpkg.com/netlify-identity-widget@2.0.3/build/netlify-identity-widget.js"
+      integrity="sha384-MDUpeNysRoXS3J89jBylG2fdrQQ0dwDBTXhXGt3XQCgsFF92tnRKZS5vCKNs3XhD"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #16262b;
+        background: #eef1ec;
+      }
+      main {
+        max-width: 46rem;
+        margin: 0 auto;
+        padding: 3rem 1.5rem 4rem;
+      }
+      h1 {
+        font-size: 1.5rem;
+        margin: 0 0 1.5rem;
+      }
+      .status {
+        padding: 1rem 0;
+        color: #4b5a5f;
+      }
+      .status button {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+        border-radius: 0.35rem;
+        border: 1px solid #16262b;
+        background: #16262b;
+        color: #fff;
+        cursor: pointer;
+      }
+      .toolbar {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      .toolbar button {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.9rem;
+        border-radius: 0.35rem;
+        border: 1px solid #b7c2be;
+        background: #fff;
+        cursor: pointer;
+      }
+      #count {
+        color: #4b5a5f;
+        font-size: 0.9rem;
+        margin-right: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        border: 1px solid #dbe1dd;
+        border-radius: 0.35rem;
+        overflow: hidden;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 0.6rem 0.8rem;
+        border-bottom: 1px solid #eef1ec;
+        font-size: 0.92rem;
+      }
+      th {
+        background: #f5f7f3;
+        font-weight: 600;
+      }
+      tr:last-child td {
+        border-bottom: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Mailing List Signups</h1>
+      <div id="status" class="status">Checking sign-in…</div>
+      <div id="content" hidden>
+        <div class="toolbar">
+          <span id="count"></span>
+          <button id="refresh" type="button">Refresh</button>
+          <button id="download" type="button">Download CSV</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Submitted</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </main>
+    <script>
+      const statusEl = document.getElementById('status');
+      const contentEl = document.getElementById('content');
+      const rowsEl = document.getElementById('rows');
+      const countEl = document.getElementById('count');
+
+      function renderRows(rows) {
+        rowsEl.innerHTML = '';
+        for (const row of rows) {
+          const tr = document.createElement('tr');
+          const nameCell = document.createElement('td');
+          const emailCell = document.createElement('td');
+          const dateCell = document.createElement('td');
+          nameCell.textContent = row.name;
+          emailCell.textContent = row.email;
+          dateCell.textContent = row.submitted_at
+            ? new Date(row.submitted_at).toLocaleString()
+            : '';
+          tr.append(nameCell, emailCell, dateCell);
+          rowsEl.appendChild(tr);
+        }
+        countEl.textContent = rows.length + (rows.length === 1 ? ' signup' : ' signups');
+      }
+
+      function showLoginPrompt() {
+        statusEl.hidden = false;
+        contentEl.hidden = true;
+        statusEl.textContent = '';
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = 'Log in to view signups';
+        button.addEventListener('click', () => window.netlifyIdentity.open('login'));
+        statusEl.appendChild(button);
+      }
+
+      async function loadSubmissions() {
+        statusEl.hidden = false;
+        contentEl.hidden = true;
+        statusEl.textContent = 'Loading…';
+        try {
+          const user = window.netlifyIdentity.currentUser();
+          const token = await user.jwt();
+          const res = await fetch('/.netlify/functions/subscribers', {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          if (!res.ok) {
+            statusEl.textContent = `Could not load signups (error ${res.status}). Try refreshing.`;
+            return;
+          }
+          const rows = await res.json();
+          statusEl.hidden = true;
+          contentEl.hidden = false;
+          renderRows(rows);
+        } catch {
+          statusEl.textContent = 'Something went wrong loading signups. Try refreshing.';
+        }
+      }
+
+      async function downloadCsv() {
+        const user = window.netlifyIdentity.currentUser();
+        const token = await user.jwt();
+        const res = await fetch('/.netlify/functions/subscribers?format=csv', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'mailing-list.csv';
+        link.click();
+        URL.revokeObjectURL(url);
+      }
+
+      document.getElementById('refresh').addEventListener('click', loadSubmissions);
+      document.getElementById('download').addEventListener('click', downloadCsv);
+
+      window.netlifyIdentity.on('init', (user) => {
+        if (user) {
+          loadSubmissions();
+        } else {
+          showLoginPrompt();
+        }
+      });
+      window.netlifyIdentity.on('login', () => {
+        window.netlifyIdentity.close();
+        loadSubmissions();
+      });
+      window.netlifyIdentity.init();
+    </script>
+  </body>
+</html>

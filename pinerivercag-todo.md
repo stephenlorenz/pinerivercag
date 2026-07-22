@@ -8,7 +8,9 @@
 - [ ] Add site search to the header
 - [x] On the homepage, there are numbers to the right of each section. Why? Remove these unless there's a good reason for them.
 - [x] Move some other the images to the new site
-- [ ] On the Photos page, allow users to click on the photo to zoom in in a modal. Also, create a  photo flip through gallery with captions.
+- [x] On the Photos page, allow users to click on the photo to zoom in in a modal. Also, create a  photo flip through gallery with captions.
+- [ ] Pull/reuse the favicon from the squarespace site
+- [ ] Hide the Poetry Contest page from the site, including links to it from the Resources menu
 
 
 

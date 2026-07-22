@@ -197,3 +197,6 @@ collections:
         fields:
           - { label: Title, name: title, widget: string }
           - { label: Body, name: body, widget: markdown }
+          - { label: Flyer Image, name: image, widget: image, required: false }
+          - { label: Show Flyer Image, name: image_visible, widget: boolean, default: false }
+          - { label: Flyer Image Caption, name: image_caption, widget: string, required: false }

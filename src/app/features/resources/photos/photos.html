@@ -1,10 +1,12 @@
-@if (page$ | async; as page) {
+@if (page(); as page) {
   <app-page-header eyebrow="From the archive" [title]="page.title" />
   <div class="container gallery">
     @for (photo of page.images; track photo.caption) {
       <figure>
         @if (photo.image) {
-          <img [src]="photo.image" [alt]="photo.caption" loading="lazy" />
+          <button type="button" class="thumb" (click)="open(photo)">
+            <img [src]="photo.image" [alt]="photo.caption" loading="lazy" />
+          </button>
         } @else {
           <div class="pending" aria-hidden="true">Photo pending upload</div>
         }
@@ -15,5 +17,41 @@
     } @empty {
       <p class="muted">No photos uploaded yet.</p>
     }
+  </div>
+}
+
+@if (active(); as photo) {
+  <div class="lightbox-backdrop" (click)="close()">
+    <div
+      class="lightbox"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-label]="photo.caption"
+      (click)="$event.stopPropagation()"
+    >
+      <button type="button" class="lightbox-close" (click)="close()" aria-label="Close">
+        &times;
+      </button>
+
+      @if (viewablePhotos().length > 1) {
+        <button type="button" class="lightbox-nav prev" (click)="prev()" aria-label="Previous photo">
+          &#8249;
+        </button>
+      }
+
+      <figure>
+        <img [src]="photo.image" [alt]="photo.caption" />
+        @if (photo.caption) {
+          <figcaption>{{ photo.caption }}</figcaption>
+        }
+      </figure>
+
+      @if (viewablePhotos().length > 1) {
+        <button type="button" class="lightbox-nav next" (click)="next()" aria-label="Next photo">
+          &#8250;
+        </button>
+        <p class="lightbox-count">{{ activeIndex()! + 1 }} / {{ viewablePhotos().length }}</p>
+      }
+    </div>
   </div>
 }

@@ -107,7 +107,10 @@
   .nav-group-menu {
     display: none;
     position: absolute;
-    top: calc(100% + 0.75rem);
+    // Flush against the toggle button (no gap): a gap here would be a dead
+    // zone the mouse has to cross before reaching the menu, breaking :hover
+    // partway through and forcing a click to open it instead.
+    top: 100%;
     left: 0;
     min-width: 220px;
     background: var(--color-paper-raised);

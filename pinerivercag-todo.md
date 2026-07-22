@@ -50,13 +50,15 @@
 
 - [ ] We need a different tagline
 
-- [ ] While in the Admin Portal, provide a link either in the header or add a footer to naviage back to the regular site.
+- [x] While in the Admin Portal, provide a link either in the header or add a footer to naviage back to the regular site.
 
 - [ ] Mailing List tasks
 
   - [x] Mailing list subscriptions are not saving (or at least don't appear in the portal)
   - [x] Add ability to delete mailing list subscriptions from the list
   - [ ] If I provide a CSV of prevoius mailing list subscriptions, can you prepopulate the mailing list signup list?
+
+- [ ] Is it possible to display the posting date in the CMS tool and order by most recent to oldest?
 
 
 

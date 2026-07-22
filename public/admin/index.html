@@ -1,41 +1,254 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="robots" content="noindex" />
-    <title>Content Manager — Pine River Task Force</title>
-    <!--
-      Versions are pinned (not a floating range like ^3.x) and the
-      integrity hash is computed against that exact pinned file, so the
-      browser refuses to run anything the CDN didn't actually serve us.
-      Bumping either version requires recomputing its hash to match —
-      see openssl dgst -sha384 in the project notes.
-    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Portal — Pine River Task Force</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
     <script
       src="https://unpkg.com/netlify-identity-widget@2.0.3/build/netlify-identity-widget.js"
       integrity="sha384-MDUpeNysRoXS3J89jBylG2fdrQQ0dwDBTXhXGt3XQCgsFF92tnRKZS5vCKNs3XhD"
       crossorigin="anonymous"
     ></script>
+    <style>
+      :root {
+        --color-ink: #16262b;
+        --color-river: #2e6e7e;
+        --color-current: #5fa8b0;
+        --color-clay: #a8623b;
+        --color-paper: #eef0e9;
+        --color-paper-raised: #f8f9f4;
+        --color-fog: #c7d0c9;
+        --color-fog-dark: #93a099;
+        --font-display: 'Fraunces', ui-serif, Georgia, serif;
+        --font-body: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+        color-scheme: light;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: var(--font-body);
+        color: var(--color-ink);
+        background: var(--color-paper);
+      }
+      .portal-bar {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1rem 1.75rem;
+        border-bottom: 1px solid var(--color-fog);
+        background: var(--color-paper-raised);
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        text-decoration: none;
+        color: var(--color-ink);
+      }
+      .brand .mark {
+        font-family: var(--font-mono);
+        font-weight: 500;
+        font-size: 0.7rem;
+        letter-spacing: 0.06em;
+        border: 1.5px solid var(--color-river);
+        color: var(--color-river);
+        padding: 0.3rem 0.4rem;
+        line-height: 1;
+      }
+      .brand .brand-text {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 1.05rem;
+      }
+      .tools {
+        display: flex;
+        gap: 0.35rem;
+        margin-right: auto;
+      }
+      .tools a {
+        font-size: 0.88rem;
+        font-weight: 500;
+        text-decoration: none;
+        color: var(--color-ink);
+        padding: 0.45rem 0.8rem;
+        border-radius: 999px;
+      }
+      .tools a:hover {
+        background: var(--color-paper);
+      }
+      .tools a.active {
+        background: var(--color-ink);
+        color: var(--color-paper);
+      }
+      #session {
+        font-size: 0.85rem;
+        color: var(--color-fog-dark);
+      }
+      #session button {
+        font-family: inherit;
+        font-size: 0.85rem;
+        color: var(--color-river);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        text-decoration: underline;
+      }
+      main {
+        max-width: 52rem;
+        margin: 0 auto;
+        padding: 3.5rem 1.75rem 4rem;
+      }
+      .eyebrow {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--color-river);
+        margin: 0 0 0.6rem;
+      }
+      h1 {
+        font-family: var(--font-display);
+        font-size: 2.1rem;
+        margin: 0 0 0.6rem;
+        text-wrap: balance;
+      }
+      .lede {
+        color: #45575c;
+        max-width: 34rem;
+        margin: 0 0 2.5rem;
+        line-height: 1.6;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.25rem;
+      }
+      .card {
+        display: block;
+        text-decoration: none;
+        color: var(--color-ink);
+        background: var(--color-paper-raised);
+        border: 1px solid var(--color-fog);
+        border-radius: 6px;
+        padding: 1.5rem;
+        transition:
+          border-color 0.15s,
+          transform 0.15s;
+      }
+      .card:hover {
+        border-color: var(--color-current);
+        transform: translateY(-2px);
+      }
+      .card .tag {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--color-river);
+        background: rgba(46, 110, 126, 0.09);
+        padding: 0.2rem 0.5rem;
+        border-radius: 3px;
+        margin-bottom: 0.9rem;
+      }
+      .card h2 {
+        font-family: var(--font-display);
+        font-size: 1.3rem;
+        margin: 0 0 0.5rem;
+      }
+      .card p {
+        font-size: 0.92rem;
+        line-height: 1.55;
+        color: #45575c;
+        margin: 0 0 1rem;
+      }
+      .card .open {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--color-river);
+      }
+    </style>
   </head>
   <body>
-    <script
-      src="https://unpkg.com/decap-cms@3.14.1/dist/decap-cms.js"
-      integrity="sha384-K+E/B3QG3FJrtRXoyUjME4ilx71pYGyrvAVxYvd/p0zCPuXsc3eoEuSzUW3Ke63V"
-      crossorigin="anonymous"
-    ></script>
+    <header class="portal-bar">
+      <a class="brand" href="/admin/">
+        <span class="mark">PRC</span>
+        <span class="brand-text">Admin Portal</span>
+      </a>
+      <nav class="tools">
+        <a href="/admin/content/">Content Manager</a>
+        <a href="/admin/subscribers/">Mailing List</a>
+      </nav>
+      <div id="session"></div>
+    </header>
+    <main>
+      <p class="eyebrow">Pine River Superfund Citizen Task Force</p>
+      <h1>Volunteer tools</h1>
+      <p class="lede">
+        Everything the team uses to keep the site current lives here. Pick a
+        tool below, or use the tabs above to jump straight to it next time.
+      </p>
+      <div class="cards">
+        <a class="card" href="/admin/content/">
+          <span class="tag">Content Manager</span>
+          <h2>News, Events &amp; Pages</h2>
+          <p>
+            Post news updates, add upcoming events, publish meeting minutes,
+            set a site-wide banner alert, and edit page content — all without
+            touching code.
+          </p>
+          <span class="open">Open Content Manager →</span>
+        </a>
+        <a class="card" href="/admin/subscribers/">
+          <span class="tag">Mailing List</span>
+          <h2>Signups</h2>
+          <p>
+            View everyone who's joined the mailing list through the site's
+            signup form, and export the full list as a CSV whenever you're
+            ready to send an update.
+          </p>
+          <span class="open">Open Mailing List →</span>
+        </a>
+      </div>
+    </main>
     <script>
-      // Netlify Identity redirects here with a token in the URL hash after
-      // an invite/confirmation email link; bounce it to the site root where
-      // the widget expects to handle it, then back.
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on('init', (user) => {
-          if (!user) {
-            window.netlifyIdentity.on('login', () => {
-              document.location.href = '/admin/';
-            });
-          }
-        });
+      const sessionEl = document.getElementById('session');
+
+      function renderSession(user) {
+        sessionEl.innerHTML = '';
+        if (user) {
+          const label = document.createElement('span');
+          label.textContent = (user.user_metadata?.full_name || user.email) + ' — ';
+          const logout = document.createElement('button');
+          logout.type = 'button';
+          logout.textContent = 'Log out';
+          logout.addEventListener('click', () => window.netlifyIdentity.logout());
+          sessionEl.append(label, logout);
+        } else {
+          const login = document.createElement('button');
+          login.type = 'button';
+          login.textContent = 'Log in';
+          login.addEventListener('click', () => window.netlifyIdentity.open('login'));
+          sessionEl.appendChild(login);
+        }
       }
+
+      window.netlifyIdentity.on('init', renderSession);
+      window.netlifyIdentity.on('login', renderSession);
+      window.netlifyIdentity.on('logout', () => renderSession(null));
+      window.netlifyIdentity.init();
     </script>
   </body>
 </html>

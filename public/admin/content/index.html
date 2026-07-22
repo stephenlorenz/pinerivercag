@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>Content Manager — Pine River Task Force</title>
+    <!--
+      Versions are pinned (not a floating range like ^3.x) and the
+      integrity hash is computed against that exact pinned file, so the
+      browser refuses to run anything the CDN didn't actually serve us.
+      Bumping either version requires recomputing its hash to match —
+      see openssl dgst -sha384 in the project notes.
+    -->
+    <script
+      src="https://unpkg.com/netlify-identity-widget@2.0.3/build/netlify-identity-widget.js"
+      integrity="sha384-MDUpeNysRoXS3J89jBylG2fdrQQ0dwDBTXhXGt3XQCgsFF92tnRKZS5vCKNs3XhD"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      /* Persistent link back to the admin portal, painted above Decap's own
+         full-screen UI via z-index rather than touching its markup. */
+      #portal-chip {
+        position: fixed;
+        top: 0.75rem;
+        left: 0.75rem;
+        z-index: 999999;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.75rem;
+        background: #16262b;
+        color: #eef0e9;
+        font:
+          500 0.82rem/1 'Public Sans',
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        text-decoration: none;
+        border-radius: 999px;
+        box-shadow: 0 2px 8px rgba(22, 38, 43, 0.35);
+      }
+      #portal-chip:hover {
+        background: #2e6e7e;
+      }
+    </style>
+  </head>
+  <body>
+    <a id="portal-chip" href="/admin/">&larr; Admin Portal</a>
+    <script
+      src="https://unpkg.com/decap-cms@3.14.1/dist/decap-cms.js"
+      integrity="sha384-K+E/B3QG3FJrtRXoyUjME4ilx71pYGyrvAVxYvd/p0zCPuXsc3eoEuSzUW3Ke63V"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Netlify Identity redirects here with a token in the URL hash after
+      // an invite/confirmation email link; bounce it to the site root where
+      // the widget expects to handle it, then back.
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', (user) => {
+          if (!user) {
+            window.netlifyIdentity.on('login', () => {
+              document.location.href = '/admin/content/';
+            });
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

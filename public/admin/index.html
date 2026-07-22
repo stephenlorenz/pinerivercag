@@ -179,6 +179,27 @@
         font-weight: 600;
         color: var(--color-river);
       }
+      .gate {
+        max-width: 52rem;
+        margin: 0 auto;
+        padding: 5rem 1.75rem;
+        color: #45575c;
+      }
+      .gate button {
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        font-weight: 600;
+        padding: 0.6rem 1.15rem;
+        border-radius: 4px;
+        border: 1px solid var(--color-ink);
+        background: var(--color-ink);
+        color: var(--color-paper);
+        cursor: pointer;
+      }
+      .gate button:hover {
+        background: var(--color-river);
+        border-color: var(--color-river);
+      }
     </style>
   </head>
   <body>
@@ -193,7 +214,8 @@
       </nav>
       <div id="session"></div>
     </header>
-    <main>
+    <div id="gate" class="gate">Checking sign-in…</div>
+    <main hidden>
       <p class="eyebrow">Pine River Superfund Citizen Task Force</p>
       <h1>Volunteer tools</h1>
       <p class="lede">
@@ -225,6 +247,8 @@
     </main>
     <script>
       const sessionEl = document.getElementById('session');
+      const gateEl = document.getElementById('gate');
+      const mainEl = document.querySelector('main');
 
       function renderSession(user) {
         sessionEl.innerHTML = '';
@@ -245,9 +269,41 @@
         }
       }
 
-      window.netlifyIdentity.on('init', renderSession);
-      window.netlifyIdentity.on('login', renderSession);
-      window.netlifyIdentity.on('logout', () => renderSession(null));
+      function showGate() {
+        gateEl.hidden = false;
+        mainEl.hidden = true;
+        gateEl.innerHTML = '';
+        const text = document.createElement('p');
+        text.textContent = 'Log in to see the volunteer tools.';
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = 'Log in';
+        button.addEventListener('click', () => window.netlifyIdentity.open('login'));
+        gateEl.append(text, button);
+      }
+
+      function showMain() {
+        gateEl.hidden = true;
+        mainEl.hidden = false;
+      }
+
+      window.netlifyIdentity.on('init', (user) => {
+        renderSession(user);
+        if (user) {
+          showMain();
+        } else {
+          showGate();
+        }
+      });
+      window.netlifyIdentity.on('login', (user) => {
+        window.netlifyIdentity.close();
+        renderSession(user);
+        showMain();
+      });
+      window.netlifyIdentity.on('logout', () => {
+        renderSession(null);
+        showGate();
+      });
       window.netlifyIdentity.init();
     </script>
   </body>

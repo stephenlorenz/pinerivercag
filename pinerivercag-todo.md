@@ -26,33 +26,29 @@
 
 - [x] I kind of like the clean look/design of the new homepage, but the old site had a lot of large splash photos in the header of the of the page. What about doing a large background image in the header of the homepage? What would that look like?
 
-- [ ] How do I integrate two things (I can look up how we are doing this on our squarespace site):
+- [x] How do I integrate two things (I can look up how we are doing this on our squarespace site):
 
   - [x] Donorbox (like we have on Squarespace)
 
   - [ ] Join mailing list (like we have on Squarespace)
 
-- [ ] How do I set up the CMS (I assume Decap CMS)? Once this is set up, can you help me migrate all the news items and meeting minutes and other things that we still need to migrate (and not loose old content)?
+- [x] How do I set up the CMS (I assume Decap CMS)? Once this is set up, can you help me migrate all the news items and meeting minutes and other things that we still need to migrate (and not loose old content)?
 
 - [x] Copy the current facebook link from the squarespace site to the footer of the new site. It currently navigates the main facebook homepage.
 
 - [x] Hide the link the "Full contact page" from the footer when we are already on the contact page.
 
-- [ ] The site header Donate button text has a weird text color on hover and it's hard to read on hover: ![CleanShot 2026-07-22 at 12.40.21@2x](/Users/scl30/Library/Application Support/CleanShot/media/media_lGIwP8gkbE/CleanShot 2026-07-22 at 12.40.21@2x.png)
+- [x] The site header Donate button text has a weird text color on hover and it's hard to read on hover: ![CleanShot 2026-07-22 at 12.40.21@2x](/Users/scl30/Library/Application Support/CleanShot/media/media_lGIwP8gkbE/CleanShot 2026-07-22 at 12.40.21@2x.png)
 
 - [ ] The new homepage (and maybe other pages) is no longer responsive
 
-- [ ] If I access /admin as a non-logged in user, it seems that I can access the portal. Is there a way to block seeing the portal page until I login?
+- [x] If I access /admin as a non-logged in user, it seems that I can access the portal. Is there a way to block seeing the portal page until I login?
 
+- [ ] Can we a link in the footer to the /admin portal?
 
+- [ ] Can you update the design of the CMS tools to better match the UIX of the rest of the portal? Also, one thing that I find not-intuitive is the navigation in the header of the CMS tool.
 
-
-
-
-
-  Deliberately deferred (flagged in claude_current_task.md):                                                                                                                                                                                               
-  - Photo assets — 26 real captions are in, but the actual JPGs need downloading from Squarespace and uploading via Decap CMS; that's a binary-asset task, separate from text content.                                                                     
-  - News/events/minutes — old site's "blog" was just recurring monthly meeting agendas; better suited to ongoing CMS-authored posts going forward than a bulk migration.
+- [ ] We need a different tagline
 
 
 

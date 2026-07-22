@@ -55,7 +55,7 @@
 - [ ] Mailing List tasks
 
   - [x] Mailing list subscriptions are not saving (or at least don't appear in the portal)
-  - [ ] Add ability to delete mailing list subscriptions from the list
+  - [x] Add ability to delete mailing list subscriptions from the list
   - [ ] If I provide a CSV of prevoius mailing list subscriptions, can you prepopulate the mailing list signup list?
 
 

@@ -215,6 +215,7 @@
         <a href="/admin/content/">Content Manager</a>
         <a href="/admin/subscribers/">Mailing List</a>
       </nav>
+      <a class="view-site" href="/">View site →</a>
       <div id="session"></div>
     </header>
     <div id="gate" class="gate">Checking sign-in…</div>
@@ -277,7 +278,7 @@
         mainEl.hidden = true;
         gateEl.innerHTML = '';
         const text = document.createElement('p');
-        text.textContent = 'Log in to see the volunteer tools.';
+        text.textContent = 'Log in to see the admin tools.';
         const button = document.createElement('button');
         button.type = 'button';
         button.textContent = 'Log in';

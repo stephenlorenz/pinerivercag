@@ -69,7 +69,11 @@ export const handler = async (event, context) => {
       id: s.id,
       name: s.data?.name ?? '',
       email: s.data?.email ?? '',
-      submitted_at: s.created_at,
+      // joined_at carries a real historical signup date for rows backfilled
+      // from an imported CSV — Netlify sets created_at to whenever the
+      // submission was actually received, which for an import is just
+      // "whenever the import ran," not the person's real join date.
+      submitted_at: s.data?.joined_at || s.created_at,
     }))
     .sort((a, b) => new Date(b.submitted_at) - new Date(a.submitted_at));
 

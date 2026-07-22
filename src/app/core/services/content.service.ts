@@ -6,6 +6,7 @@ import {
   EventItem,
   MinutesItem,
   NewsPost,
+  SearchDoc,
 } from '../../shared/models/content.model';
 
 // Fetches build-time-generated JSON from /assets/content-index (see
@@ -44,5 +45,9 @@ export class ContentService {
 
   getPage<T>(name: string): Observable<T> {
     return this.fetch<T>(`pages/${name}.json`);
+  }
+
+  getSearchIndex(): Observable<SearchDoc[]> {
+    return this.fetch<SearchDoc[]>('search-index.json');
   }
 }

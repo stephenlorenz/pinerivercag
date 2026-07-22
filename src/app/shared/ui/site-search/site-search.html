@@ -1,0 +1,69 @@
+<button type="button" class="search-trigger" (click)="open()" aria-label="Search site">
+  <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+    <circle cx="8.5" cy="8.5" r="6" fill="none" stroke="currentColor" stroke-width="1.8" />
+    <line x1="13.2" y1="13.2" x2="18" y2="18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+  </svg>
+</button>
+
+@if (isOpen()) {
+  <div class="search-backdrop" (click)="close()">
+    <div
+      class="search-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Site search"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="search-input-row">
+        <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+          <circle cx="8.5" cy="8.5" r="6" fill="none" stroke="currentColor" stroke-width="1.8" />
+          <line
+            x1="13.2"
+            y1="13.2"
+            x2="18"
+            y2="18"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+        <input
+          #searchInput
+          type="search"
+          placeholder="Search the site…"
+          aria-label="Search the site"
+          [ngModel]="query()"
+          (ngModelChange)="onQueryChange($event)"
+          (keydown)="onInputKeydown($event)"
+        />
+        <button type="button" class="search-close" (click)="close()" aria-label="Close search">
+          &times;
+        </button>
+      </div>
+
+      @if (query().trim().length >= 2) {
+        <ul class="search-results">
+          @for (doc of results(); track doc.url + doc.title; let i = $index) {
+            <li>
+              <button
+                type="button"
+                class="result"
+                [class.active]="i === activeIndex()"
+                (mouseenter)="activeIndex.set(i)"
+                (click)="select(doc)"
+              >
+                <span class="result-title">{{ doc.title }}</span>
+                <span class="result-section">{{ doc.section }}</span>
+                <span class="result-excerpt">{{ doc.excerpt }}</span>
+              </button>
+            </li>
+          } @empty {
+            <li class="no-results">No results for "{{ query() }}".</li>
+          }
+        </ul>
+      } @else {
+        <p class="search-hint">Search pages, news, glossary terms, and more.</p>
+      }
+    </div>
+  </div>
+}

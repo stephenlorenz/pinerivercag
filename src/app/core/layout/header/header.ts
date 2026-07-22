@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { SiteSearch } from '../../../shared/ui/site-search/site-search';
 
 interface NavGroup {
   label: string;
@@ -8,7 +9,7 @@ interface NavGroup {
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, SiteSearch],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })

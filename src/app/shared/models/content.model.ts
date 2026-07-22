@@ -76,3 +76,10 @@ export interface ContactPage {
   phone: string;
   address: string;
 }
+
+export interface SearchDoc {
+  title: string;
+  section: string;
+  url: string;
+  excerpt: string;
+}

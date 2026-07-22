@@ -3,10 +3,17 @@
   form-detection crawler can see this form's shape — Netlify cannot see
   the real, client-rendered Angular form at src/app/features/contact/mailing-list-form.
   Field names here must exactly match the ones posted at runtime.
+
+  joined_at isn't posted by the real visitor-facing form — it's only ever
+  set by the one-off historical CSV import script, to carry a real signup
+  date instead of whenever the import happened to run. Netlify only stores
+  fields that are part of a form's declared shape, so it has to be declared
+  here even though ordinary signups always leave it blank.
 -->
 <form name="mailing-list" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
   <input type="hidden" name="form-name" value="mailing-list" />
   <input type="text" name="name" />
   <input type="email" name="email" />
   <input type="text" name="bot-field" />
+  <input type="hidden" name="joined_at" />
 </form>

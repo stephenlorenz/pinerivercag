@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component } from '@angular/core';
 
 // Signature motif: a core-sample stratigraphy band, standing in for the
 // sediment layers this task force has spent decades tracking. Used between
@@ -8,6 +8,4 @@ import { Component, input } from '@angular/core';
   templateUrl: './section-divider.html',
   styleUrl: './section-divider.scss',
 })
-export class SectionDivider {
-  readonly depth = input<string>('');
-}
+export class SectionDivider {}

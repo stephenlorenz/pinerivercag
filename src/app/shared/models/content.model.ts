@@ -59,6 +59,9 @@ export interface SimplePage {
   title: string;
   body?: string;
   bodyHtml?: string;
+  image?: string | null;
+  image_visible?: boolean;
+  image_caption?: string;
 }
 
 export interface PartnersPage {

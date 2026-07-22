@@ -1,6 +1,14 @@
 @if (page$ | async; as page) {
   <app-page-header [eyebrow]="eyebrow" [title]="page.title" />
   <div class="container">
+    @if (page.image && page.image_visible) {
+      <figure class="page-image">
+        <img [src]="page.image" [alt]="page.image_caption || page.title" />
+        @if (page.image_caption) {
+          <figcaption>{{ page.image_caption }}</figcaption>
+        }
+      </figure>
+    }
     <div class="prose" [innerHTML]="page.bodyHtml"></div>
   </div>
 }

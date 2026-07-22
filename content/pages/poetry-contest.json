@@ -1,4 +1,7 @@
 {
   "title": "Poetry Contest",
-  "body": "The Task Force runs a PBB CAG Poetry Contest. Full rules, deadlines, and prize details aren't published online yet — contact the Task Force directly for current contest information:\n\n- Phone: (989) 763-4423\n- Mailing address: P.O. Box 172, St. Louis, MI 48880\n\n*The contest flyer and full submission details should be added here once gathered from the organization — this page is a placeholder for that follow-up, not a final migration.*"
+  "image": "/content-uploads/poetry-contest-flyer.jpeg",
+  "image_visible": false,
+  "image_caption": "PBB CAG Poetry Contest flyer",
+  "body": "The Task Force has run a PBB CAG Poetry Contest in past years — the flyer is on file and ready to go if the contest runs again. Full rules, deadlines, and prize details aren't published online yet — contact the Task Force directly for current contest information:\n\n- Phone: (989) 763-4423\n- Mailing address: P.O. Box 172, St. Louis, MI 48880"
 }

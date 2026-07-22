@@ -5,7 +5,7 @@
       <p class="tagline">Watching the water since 1998.</p>
       <a
         class="social"
-        href="https://www.facebook.com/"
+        href="https://www.facebook.com/PineRiverCAG/"
         target="_blank"
         rel="noopener"
         >Facebook</a
@@ -24,7 +24,9 @@
         @if (contact.address) {
           <p class="address">{{ contact.address }}</p>
         }
-        <a routerLink="/contact">Full contact page →</a>
+        @if (!onContactPage()) {
+          <a routerLink="/contact">Full contact page →</a>
+        }
       </div>
     }
 

@@ -1,25 +1,30 @@
 // Serves mailing-list signups collected by Netlify Forms to the
 // Identity-gated admin page at /admin/subscribers/. Netlify verifies the
 // `Authorization: Bearer <identity-jwt>` header itself before invoking this
-// function, so context.clientContext.user is only populated for signed-in,
-// Identity-authenticated requests — no separate auth check needed here.
+// function, populating context.clientContext.user for signed-in requests —
+// no separate auth check needed here.
+//
+// Written as a classic ("v1") handler, not the newer default-export API:
+// the automatic Identity JWT verification that populates
+// context.clientContext.user only exists on classic Functions.
 //
 // Requires two environment variables, set in the Netlify dashboard (Site
 // settings > Environment variables) — never committed to the repo:
 //   NETLIFY_API_TOKEN — a Personal Access Token (User settings > Applications)
 //   NETLIFY_SITE_ID   — this site's ID (Site settings > General > Site details)
 
-export default async (req, context) => {
+export const handler = async (event, context) => {
   if (!context.clientContext?.user) {
-    return new Response('Unauthorized', { status: 401 });
+    return { statusCode: 401, body: 'Unauthorized' };
   }
 
   const token = process.env.NETLIFY_API_TOKEN;
   const siteId = process.env.NETLIFY_SITE_ID;
   if (!token || !siteId) {
-    return new Response('Server misconfigured: missing NETLIFY_API_TOKEN or NETLIFY_SITE_ID', {
-      status: 500,
-    });
+    return {
+      statusCode: 500,
+      body: 'Server misconfigured: missing NETLIFY_API_TOKEN or NETLIFY_SITE_ID',
+    };
   }
 
   const apiHeaders = { Authorization: `Bearer ${token}` };
@@ -28,19 +33,19 @@ export default async (req, context) => {
     headers: apiHeaders,
   });
   if (!formsRes.ok) {
-    return new Response('Failed to look up forms', { status: 502 });
+    return { statusCode: 502, body: 'Failed to look up forms' };
   }
   const forms = await formsRes.json();
   const form = forms.find((f) => f.name === 'mailing-list');
   if (!form) {
-    return jsonOrCsv(req, []);
+    return respond(event, []);
   }
 
   const subsRes = await fetch(`https://api.netlify.com/api/v1/forms/${form.id}/submissions`, {
     headers: apiHeaders,
   });
   if (!subsRes.ok) {
-    return new Response('Failed to fetch submissions', { status: 502 });
+    return { statusCode: 502, body: 'Failed to fetch submissions' };
   }
   const submissions = await subsRes.json();
 
@@ -52,24 +57,29 @@ export default async (req, context) => {
     }))
     .sort((a, b) => new Date(b.submitted_at) - new Date(a.submitted_at));
 
-  return jsonOrCsv(req, rows);
+  return respond(event, rows);
 };
 
-function jsonOrCsv(req, rows) {
-  const url = new URL(req.url);
-  if (url.searchParams.get('format') === 'csv') {
+function respond(event, rows) {
+  if (event.queryStringParameters?.format === 'csv') {
     const csv = [
       'name,email,submitted_at',
       ...rows.map((r) => [r.name, r.email, r.submitted_at].map(csvEscape).join(',')),
     ].join('\n');
-    return new Response(csv, {
+    return {
+      statusCode: 200,
       headers: {
         'Content-Type': 'text/csv',
         'Content-Disposition': 'attachment; filename="mailing-list.csv"',
       },
-    });
+      body: csv,
+    };
   }
-  return new Response(JSON.stringify(rows), { headers: { 'Content-Type': 'application/json' } });
+  return {
+    statusCode: 200,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(rows),
+  };
 }
 
 function csvEscape(value) {

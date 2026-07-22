@@ -20,12 +20,13 @@ input[type='email'] {
   flex: 1 1 180px;
 }
 
+// display:none (not off-screen positioning) so browser autofill reliably
+// skips this field — off-screen-but-visible fields can still get swept into
+// Chrome's address/name autofill, silently tripping the honeypot for real
+// visitors. display:none is just as effective against actual spam bots,
+// since unsophisticated scrapers parse raw HTML regardless of CSS.
 .hp {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
+  display: none;
 }
 
 .confirm {

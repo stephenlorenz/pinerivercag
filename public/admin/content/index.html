@@ -107,10 +107,66 @@
         padding: 0;
         text-decoration: underline;
       }
+      /* Covers Decap's own splash screen (its logo/wordmark and "Login with
+         Netlify Identity" button) entirely until a session is confirmed,
+         rather than trying to reach into Decap's internal, auto-generated
+         CSS-in-JS class names — those aren't stable across versions, this
+         plain overlay approach is. */
+      #gate {
+        position: fixed;
+        inset: 0;
+        z-index: 2147483000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.25rem;
+        background: var(--color-paper);
+        font-family: var(--font-body);
+        text-align: center;
+        padding: 1.5rem;
+      }
+      #gate .mark {
+        font-family: var(--font-mono);
+        font-weight: 500;
+        font-size: 0.75rem;
+        letter-spacing: 0.06em;
+        border: 1.5px solid var(--color-river);
+        color: var(--color-river);
+        padding: 0.35rem 0.5rem;
+        line-height: 1;
+      }
+      #gate h1 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 1.4rem;
+        color: var(--color-ink);
+        margin: 0;
+      }
+      #gate p {
+        color: #45575c;
+        margin: 0;
+        max-width: 24rem;
+      }
+      #gate button {
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        font-weight: 600;
+        padding: 0.65rem 1.3rem;
+        border-radius: 4px;
+        border: 1px solid var(--color-ink);
+        background: var(--color-ink);
+        color: var(--color-paper);
+        cursor: pointer;
+      }
+      #gate button:hover {
+        background: var(--color-river);
+        border-color: var(--color-river);
+      }
     </style>
   </head>
   <body>
-    <header class="portal-bar">
+    <header class="portal-bar" hidden>
       <a class="brand" href="/admin/">
         <span class="mark">PRC</span>
         <span class="brand-text">Admin Portal</span>
@@ -121,6 +177,12 @@
       </nav>
       <div id="session"></div>
     </header>
+    <div id="gate">
+      <span class="mark">PRC</span>
+      <h1>Content Manager</h1>
+      <p>Sign in to add news, events, meeting minutes, and page updates.</p>
+      <button id="gate-login" type="button">Log in</button>
+    </div>
     <script
       src="https://unpkg.com/decap-cms@3.14.1/dist/decap-cms.js"
       integrity="sha384-K+E/B3QG3FJrtRXoyUjME4ilx71pYGyrvAVxYvd/p0zCPuXsc3eoEuSzUW3Ke63V"
@@ -128,40 +190,54 @@
     ></script>
     <script>
       const sessionEl = document.getElementById('session');
+      const headerEl = document.querySelector('.portal-bar');
+      const gateEl = document.getElementById('gate');
 
       function renderSession(user) {
         sessionEl.innerHTML = '';
-        if (user) {
-          const label = document.createElement('span');
-          label.textContent = (user.user_metadata?.full_name || user.email) + ' — ';
-          const logout = document.createElement('button');
-          logout.type = 'button';
-          logout.textContent = 'Log out';
-          logout.addEventListener('click', () => window.netlifyIdentity.logout());
-          sessionEl.append(label, logout);
-        } else {
-          const login = document.createElement('button');
-          login.type = 'button';
-          login.textContent = 'Log in';
-          login.addEventListener('click', () => window.netlifyIdentity.open('login'));
-          sessionEl.appendChild(login);
-        }
+        const label = document.createElement('span');
+        label.textContent = (user.user_metadata?.full_name || user.email) + ' — ';
+        const logout = document.createElement('button');
+        logout.type = 'button';
+        logout.textContent = 'Log out';
+        logout.addEventListener('click', () => window.netlifyIdentity.logout());
+        sessionEl.append(label, logout);
       }
+
+      function showApp() {
+        headerEl.hidden = false;
+        gateEl.hidden = true;
+      }
+
+      function showGate() {
+        headerEl.hidden = true;
+        gateEl.hidden = false;
+      }
+
+      document
+        .getElementById('gate-login')
+        .addEventListener('click', () => window.netlifyIdentity.open('login'));
 
       // Netlify Identity redirects here with a token in the URL hash after
       // an invite/confirmation email link; bounce it to the site root where
       // the widget expects to handle it, then back.
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on('init', (user) => {
-          renderSession(user);
-          if (!user) {
+          if (user) {
+            renderSession(user);
+            showApp();
+          } else {
+            showGate();
             window.netlifyIdentity.on('login', () => {
               document.location.href = '/admin/content/';
             });
           }
         });
-        window.netlifyIdentity.on('login', renderSession);
-        window.netlifyIdentity.on('logout', () => renderSession(null));
+        window.netlifyIdentity.on('login', (user) => {
+          renderSession(user);
+          showApp();
+        });
+        window.netlifyIdentity.on('logout', showGate);
       }
     </script>
   </body>

@@ -50,10 +50,12 @@
 
 - [ ] We need a different tagline
 
+- [ ] While in the Admin Portal, provide a link either in the header or add a footer to naviage back to the regular site.
+
 - [ ] Mailing List tasks
 
   - [ ] Mailing list subscriptions are not saving (or at least don't appear in the portal)
-  - [ ] If I provide a CSV of pr
+  - [ ] If I provide a CSV of prevoius mailing list subscriptions, can you prepopulate the mailing list signups list?
 
 
 

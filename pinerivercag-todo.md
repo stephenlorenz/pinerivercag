@@ -62,7 +62,7 @@
 
 - [x] Is there a way to hide the logout from the Decap header? 
 
-- [ ] Is it possible to send an email alert to all netlify users for this project whenever the mailing list is updated?
+- [x] Is it possible to send an email alert to all netlify users for this project whenever the mailing list is updated?
 
 
 

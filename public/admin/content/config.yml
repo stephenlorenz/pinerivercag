@@ -17,7 +17,7 @@ collections:
     folder: "content/news"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    summary: "{{title}} — {{date | date('MMM D, YYYY')}} — {{commit_author}}"
+    summary: "{{title}} — {{date | date('MMM D, YYYY')}}"
     sortable_fields: ['date', 'title', 'commit_author', 'commit_date']
     fields:
       - { label: Title, name: title, widget: string }
@@ -46,7 +46,7 @@ collections:
     folder: "content/minutes"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    summary: "{{title}} — {{date | date('MMM D, YYYY')}} — {{commit_author}}"
+    summary: "{{title}} — {{date | date('MMM D, YYYY')}}"
     sortable_fields: ['date', 'title', 'commit_author', 'commit_date']
     fields:
       - { label: Title, name: title, widget: string }

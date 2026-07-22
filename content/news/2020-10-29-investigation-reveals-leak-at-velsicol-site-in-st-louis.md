@@ -1,0 +1,11 @@
+---
+title: "Investigation Reveals Leak at Velsicol Site in St. Louis"
+date: "2020-10-29"
+summary: "Investigation Reveals Leak at Velsicol Site in St. Louis Pine River Superfund Citizen Task Force The results of an investigation of the old slurry wall…"
+---
+
+Investigation Reveals Leak at Velsicol Site in St. Louis Pine River Superfund Citizen Task Force The results of an investigation of the old slurry wall surrounding the former Velsicol chemical plant have revealed a new leak. It was already known from previous investigations that much of the slurry wall was leaking contaminated groundwater into the river. The new leak was discovered on the east portion of the wall between the chemical plant site and the residential neighborhood.
+
+The United States Environmental Protection Agency undertook the investigation last fall after members of the Pine River Superfund Citizen Task Force questioned their proposed plan to reuse that portion of the wall. A legal document published in 2012 stipulated a new sheet pile wall be erected outside the old slurry wall around the entire 52-acre site. When EPA reviewed its data, it was determined that the east portion of the wall was doing its job in containing contaminated groundwater, and could be re-used A dye test was instigated last fall with piezometer tubes positioned on both sides of the old underground slurry wall. If the dye did not reach the outside tube, that section of wall was determined to be reliable. The dye test revealed the leak.
+
+The new leak is suspected to be located where soil borings previously showed the slurry wall had not been keyed into the lower clay till unit of the site. Instead, the depth of the slurry wall had stopped in a sandy area that allowed groundwater to leak into the surrounding land. Scott Pratt, project manager for Jacobs, EPA’s chief contractor, said that the leak is “not a giant plume” but that some of the contaminated groundwater has leaked into the adjacent residential area. Monitoring wells in that area have found no contaminants in the drinking water system. Pratt said the data supports the fact that the old wall “is not perfect,” and that a second phase of the investigation is being planned.

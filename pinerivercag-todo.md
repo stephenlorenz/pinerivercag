@@ -40,7 +40,9 @@
 
 - [ ] The site header Donate button text has a weird text color on hover and it's hard to read on hover: ![CleanShot 2026-07-22 at 12.40.21@2x](/Users/scl30/Library/Application Support/CleanShot/media/media_lGIwP8gkbE/CleanShot 2026-07-22 at 12.40.21@2x.png)
 
-- [ ] The new homepage (and maybe other pages) is no longer responsive: 
+- [ ] The new homepage (and maybe other pages) is no longer responsive
+
+- [ ] If I access /admin as a non-logged in user, it seems that I can access the portal. Is there a way to block seeing the portal page until I login?
 
 
 

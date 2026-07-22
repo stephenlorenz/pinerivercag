@@ -2,7 +2,7 @@
   @if (post) {
     <div class="container article">
       <a class="back" routerLink="/news">← All news</a>
-      <p class="eyebrow">{{ post.date | date: 'MMMM d, y' }}</p>
+      <p class="eyebrow">{{ post.date | date: 'MMMM d, y' : 'UTC' }}</p>
       <h1>{{ post.title }}</h1>
       <div class="prose" [innerHTML]="post.bodyHtml"></div>
     </div>

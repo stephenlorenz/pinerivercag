@@ -213,14 +213,18 @@ async function main() {
   await mkdir(outDir, { recursive: true });
   await mkdir(path.join(outDir, 'pages'), { recursive: true });
 
-  const news = (await readMarkdownCollection('news')).sort((a, b) =>
-    String(b.date).localeCompare(String(a.date)),
+  // gray-matter/js-yaml auto-parses unquoted date-like frontmatter scalars
+  // into native Date objects, so comparators use getTime() rather than
+  // string comparison — String(dateObject) is weekday-first
+  // ("Mon Oct 26 2020...") and sorts alphabetically by weekday, not time.
+  const news = (await readMarkdownCollection('news')).sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
-  const events = (await readMarkdownCollection('events')).sort((a, b) =>
-    String(a.start_date).localeCompare(String(b.start_date)),
+  const events = (await readMarkdownCollection('events')).sort(
+    (a, b) => new Date(a.start_date).getTime() - new Date(b.start_date).getTime(),
   );
-  const minutes = (await readMarkdownCollection('minutes')).sort((a, b) =>
-    String(b.date).localeCompare(String(a.date)),
+  const minutes = (await readMarkdownCollection('minutes')).sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
   const banner = await readJsonFile('banner/banner.json');
   const pages = await readPagesCollection();

@@ -28,15 +28,17 @@
 
 - [ ] How do I integrate two things (I can look up how we are doing this on our squarespace site):
 
-  - Donorbox (like we have on Squarespace)
+  - [x] Donorbox (like we have on Squarespace)
 
-  - Join mailing list (like we have on Squarespace)
+  - [ ] Join mailing list (like we have on Squarespace)
 
 - [ ] How do I set up the CMS (I assume Decap CMS)? Once this is set up, can you help me migrate all the news items and meeting minutes and other things that we still need to migrate (and not loose old content)?
 
 - [x] Copy the current facebook link from the squarespace site to the footer of the new site. It currently navigates the main facebook homepage.
 
 - [x] Hide the link the "Full contact page" from the footer when we are already on the contact page.
+
+- [ ] The new homepage (and maybe other pages) is no longer responsive: 
 
 
 

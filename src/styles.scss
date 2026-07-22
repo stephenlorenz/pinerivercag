@@ -35,6 +35,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scrollbar-gutter: stable both-edges;
+}
+
 html,
 body {
   margin: 0;
